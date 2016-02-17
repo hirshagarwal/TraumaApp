@@ -14,8 +14,15 @@ public class SelectTrauma extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_trauma);
+        String list = "";
+        //Open and execute network connection
+        System.out.println("About to send POST request");
 
-        String[] values = {"T1", "T2"};
+            WebClient poster = new WebClient("test", this.getApplicationContext());
+            poster.execute("http://52.32.13.117/TraumaServer/postTest.php");
+        list = poster.getResponse();
+        //Generate string from values
+        String[] values = {list, "T2"};
         //Create the adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
 
@@ -27,8 +34,8 @@ public class SelectTrauma extends Activity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(newPatient.class);
-
+                Intent intent = new Intent(view.getContext(), newPatient.class);
+                startActivity(intent);
             }
         });
 
