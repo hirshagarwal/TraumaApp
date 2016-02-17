@@ -35,7 +35,7 @@ public class WebClient extends AsyncTask<String, Void, String>{
     //Fields
     String data;
     Context context;
-    String returnData = "test";
+    public String returnData;
 
     public WebClient(String dataList, Context context){
         data = dataList;
@@ -51,16 +51,20 @@ public class WebClient extends AsyncTask<String, Void, String>{
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-            //add reuqest header
+            //add request header
             con.setRequestMethod("POST");
-            con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            con.setRequestProperty("charset", "utf-8");
+            con.setUseCaches (false);
 
+            JSONObject jsonParam = new JSONObject();
+            jsonParam.put("test", "Trauma 1");
             String urlParameters = "data=test";
 
             // Send post request
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.writeBytes(urlParameters);
+            wr.writeBytes(jsonParam.toString());
             wr.flush();
             wr.close();
 
@@ -79,10 +83,10 @@ public class WebClient extends AsyncTask<String, Void, String>{
             in.close();
 
             //print result
-            System.out.println("RESPONSE -----------------------------------" + response.toString());
         } catch (Exception e){
             e.printStackTrace();
         }
+        System.out.println("RESPONSE --------------------------" +response.toString());
         returnData = response.toString();
         return response.toString();
     }
