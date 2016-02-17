@@ -35,7 +35,7 @@ public class WebClient extends AsyncTask<String, Void, String>{
     //Fields
     String data;
     Context context;
-    public String returnData;
+    private String returnData;
 
     public WebClient(String dataList, Context context){
         data = dataList;
@@ -58,13 +58,13 @@ public class WebClient extends AsyncTask<String, Void, String>{
             con.setUseCaches (false);
 
             JSONObject jsonParam = new JSONObject();
-            jsonParam.put("test", "Trauma 1");
+            jsonParam.put("organization", 1);
             String urlParameters = "data=test";
 
             // Send post request
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.writeBytes(jsonParam.toString());
+            wr.writeBytes(data);
             wr.flush();
             wr.close();
 

@@ -10,10 +10,39 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/traumaName"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:hint="Trauma Name" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/traumaLocation"
+        android:layout_below="@+id/traumaName"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/traumaName"
+        android:hint="Location" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/otherInfo"
+        android:layout_below="@+id/traumaLocation"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/traumaLocation"
+        android:layout_above="@+id/createButton"
+        android:hint="Other information" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        android:id="@+id/createButton"
+        android:layout_centerVertical="true"
+        android:onClick="createTrauma"/>
 
 </RelativeLayout>

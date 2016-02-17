@@ -9,6 +9,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class newTrauma extends Activity {
 
@@ -16,6 +23,48 @@ public class newTrauma extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_trauma);
+    }
+
+    public void createTrauma(View v){
+        //Get components
+        TextView nameText = (TextView) this.findViewById(R.id.traumaName);
+        TextView locationText = (TextView) this.findViewById(R.id.traumaLocation);
+        TextView otherInfoText = (TextView) this.findViewById(R.id.otherInfo);
+        //Set Fields
+        String name = nameText.getText().toString();
+        String location = locationText.getText().toString();
+        String otherInfo = otherInfoText.getText().toString();
+
+        //Generate JSON to send
+        JSONObject sendObj = new JSONObject();
+            //Try to build the JSON object
+        try {
+            sendObj.put("name", name);
+            sendObj.put("location", location);
+            sendObj.put("notes", otherInfo);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+        String uploadObj = sendObj.toString();
+        WebClient web = new WebClient(uploadObj, this.getApplicationContext());
+        web.execute("http://52.32.13.117/TraumaServer/createTrauma.php");
+        //Wait for execution
+        try{
+            web.get(1000, TimeUnit.MILLISECONDS);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        String resp = web.getResponse();
+        //Try to encode as JSON
+        try {
+            JSONObject jsonData = new JSONObject(resp);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        //Move to the new patient screen
+        Intent i = new Intent(this, newPatient.class);
+        startActivity(i);
     }
 
     @Override

@@ -9,6 +9,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class SelectTrauma extends Activity{
@@ -22,15 +27,32 @@ public class SelectTrauma extends Activity{
         System.out.println("About to send POST request");
 
             WebClient poster = new WebClient("test", this.getApplicationContext());
-            poster.execute("http://52.32.13.117/TraumaServer/postTest.php");
+            poster.execute("http://52.32.13.117/TraumaServer/currentTrauma.php");
         try {
             poster.get(1000, TimeUnit.MILLISECONDS);
         } catch (Exception e){
             e.printStackTrace();
         }
-        list = poster.returnData;
+        list = poster.getResponse();
+
+        JSONArray tList = new JSONArray();
+        try {
+            JSONObject traumas = new JSONObject(list);
+            tList = traumas.getJSONArray("traumas");
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        ArrayList<String> values = new ArrayList<String>();
+        for(int i=0; i<tList.length(); i++){
+            try {
+                values.add(tList.get(i).toString());
+            } catch (JSONException e){
+                e.printStackTrace();
+            }
+        }
         //Generate string from values
-        String[] values = {list, "T2"};
+
         //Create the adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
 

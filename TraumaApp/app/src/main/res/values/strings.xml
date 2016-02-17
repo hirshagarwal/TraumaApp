@@ -6,4 +6,10 @@
     <string name="title_activity_new_trauma">newTrauma</string>
     <string name="title_activity_new_patient">newPatient</string>
     <string name="title_activity_select_trauma">SelectTrauma</string>
+    <string name="title_activity_eyes">Eyes</string>
+    <string name="title_activity_verbal">Verbal</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+    <string name="title_activity_motor">Motor</string>
+    <string name="title_activity_score">Score</string>
 </resources>

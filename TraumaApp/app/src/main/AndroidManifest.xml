@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hirshagarwal.traumaapp">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -26,7 +26,19 @@
             android:label="@string/title_activity_new_patient" />
         <activity
             android:name=".SelectTrauma"
-            android:label="@string/title_activity_select_trauma"></activity>
+            android:label="@string/title_activity_select_trauma" />
+        <activity
+            android:name=".gcs.Eyes"
+            android:label="@string/title_activity_eyes" />
+        <activity
+            android:name=".gcs.Verbal"
+            android:label="@string/title_activity_verbal" />
+        <activity
+            android:name=".gcs.Motor"
+            android:label="@string/title_activity_motor" />
+        <activity
+            android:name=".gcs.Score"
+            android:label="@string/title_activity_score"></activity>
     </application>
 
 </manifest>
