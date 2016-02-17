@@ -28,6 +28,11 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void currentTrauma(View v){
+        Intent intent = new Intent(this, SelectTrauma.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
