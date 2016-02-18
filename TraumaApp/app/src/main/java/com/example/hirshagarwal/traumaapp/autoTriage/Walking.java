@@ -16,7 +16,9 @@ public class Walking extends Activity {
     }
 
     public void trueButton(View v){
-
+        Intent intent = new Intent(this, com.example.hirshagarwal.traumaapp.autoTriage.Priority.class);
+        intent.putExtra("priority", 3);
+        startActivity(intent);
     }
 
     public void falseButton(View v){

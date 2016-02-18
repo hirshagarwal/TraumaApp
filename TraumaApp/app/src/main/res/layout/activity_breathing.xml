@@ -45,7 +45,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Patient is breathing"
         android:id="@+id/textView2"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="51dp"
         android:layout_above="@+id/fabCancel"
-        android:layout_toEndOf="@+id/fabCancel" />
+        android:layout_toStartOf="@+id/fabConfirm" />
 </RelativeLayout>
