@@ -41,7 +41,16 @@
             android:label="@string/title_activity_score" />
         <activity
             android:name=".PatientDashboard"
-            android:label="@string/title_activity_patient_dashboard"></activity>
+            android:label="@string/title_activity_patient_dashboard" />
+        <activity
+            android:name=".autoTriage.Walking"
+            android:label="@string/title_activity_walking" />
+        <activity
+            android:name=".autoTriage.Breathing"
+            android:label="@string/title_activity_breathing" />
+        <activity
+            android:name=".autoTriage.Priority"
+            android:label="@string/title_activity_priority"></activity>
     </application>
 
 </manifest>
