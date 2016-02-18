@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,17 +37,25 @@ public class SelectTrauma extends Activity{
         list = poster.getResponse();
 
         JSONArray tList = new JSONArray();
+        JSONArray idList = new JSONArray();
         try {
             JSONObject traumas = new JSONObject(list);
             tList = traumas.getJSONArray("traumas");
+            idList = traumas.getJSONArray("ids");
+
         } catch (JSONException e){
             e.printStackTrace();
         }
 
         ArrayList<String> values = new ArrayList<String>();
+        ArrayList<Integer> ids = new ArrayList<>();
+        final ArrayList<Pair<Integer, String>> traumaList = new ArrayList<>();
         for(int i=0; i<tList.length(); i++){
             try {
+                Pair<Integer, String> current = new Pair<>(Integer.parseInt(idList.get(i).toString()), tList.get(i).toString());
                 values.add(tList.get(i).toString());
+                ids.add(Integer.parseInt(idList.get(i).toString()));
+                traumaList.add(current);
             } catch (JSONException e){
                 e.printStackTrace();
             }
@@ -64,7 +73,12 @@ public class SelectTrauma extends Activity{
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println(position + "------------------------------------------------------------");
+                Pair<Integer, String> selectedTrauma = traumaList.get(position);
+                System.out.println(selectedTrauma.toString());
+                int currentId = selectedTrauma.first;
                 Intent intent = new Intent(view.getContext(), newPatient.class);
+                intent.putExtra("traumaId", currentId);
                 startActivity(intent);
             }
         });

@@ -3,9 +3,13 @@ package com.example.hirshagarwal.traumaapp.autoTriage;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.View;
 import android.widget.TextView;
 
+import com.example.hirshagarwal.traumaapp.PatientDashboard;
 import com.example.hirshagarwal.traumaapp.R;
+import com.example.hirshagarwal.traumaapp.Singleton;
+import com.example.hirshagarwal.traumaapp.obj.Patient;
 
 public class Priority extends Activity {
 
@@ -29,7 +33,15 @@ public class Priority extends Activity {
         } else {
             scoreText = "3 - Delayed";
         }
+        Singleton s = Singleton.getInstance();
+        Patient p = s.getPatient();
+        p.setPriority(priority);
         scoreView.setText("Priority: " + scoreText);
+    }
+
+    public void trueButton(View v){
+        Intent i = new Intent(this, PatientDashboard.class);
+        startActivity(i);
     }
 
 }

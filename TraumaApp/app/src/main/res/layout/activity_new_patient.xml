@@ -37,4 +37,22 @@
         android:layout_alignTop="@+id/gcsButton"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Trauma: "
+        android:id="@+id/traumaNameView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Servicing Hospital:"
+        android:id="@+id/hospitalNameView"
+        android:layout_below="@+id/traumaNameView"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

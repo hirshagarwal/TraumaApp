@@ -7,8 +7,8 @@ public class Patient {
 
     private String name = "";
     private int id = 0;
-    private int gcs = 0;
-    private int priority = 0;
+    private int gcs = -1;
+    private int priority = -1;
     private int gender = 0;
     private String responder = null;
 

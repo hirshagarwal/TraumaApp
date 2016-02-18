@@ -28,8 +28,15 @@ public class PatientDashboard extends Activity {
         EditText nameView = (EditText) findViewById(R.id.nameText);
 
         nameView.setText(p.getName());
-        gcsView.setText("GCS: " + p.getGCS());
-        priorityView.setText("Priority: " + p.getPriority());
+        if(p.getGCS()==-1){
+            gcsView.setText("GCS: Untested");
+        } else {
+            gcsView.setText("GCS: " + p.getGCS());
+        }
+        //Set priority text
+        int priority = p.getPriority();
+        String pText = setPriorityText(p);
+        priorityView.setText("Priority: " + pText);
         if(p.getGender()==0){
             genderSwitch.setChecked(false);
             genderSwitch.setText("Male: ");
@@ -39,9 +46,32 @@ public class PatientDashboard extends Activity {
         }
     }
 
-    public void setPriority(View v){
-        //TODO Link to the priority automator
+    //Get the text to write depeding on patient priority
+    private String setPriorityText(Patient p){
+        int priority = p.getPriority();
+        String pText = "";
+        if(priority==-1){
+            pText = "Not Set";
+        } else if(priority==0){
+            pText = "0 - Unresponsive";
+        } else if(priority==1){
+            pText = "1 - Immediate";
+        } else if(priority ==2){
+            pText = "2 - Urgent";
+        } else {
+            pText = "3 - Delayed";
+        }
+        return pText;
+    }
 
+    public void setPriority(View v){
+        Intent i = new Intent(this, com.example.hirshagarwal.traumaapp.autoTriage.Walking.class);
+        startActivity(i);
+    }
+
+    public void setGCS(View v){
+        Intent i = new Intent(this, com.example.hirshagarwal.traumaapp.gcs.Eyes.class);
+        startActivity(i);
     }
 
 

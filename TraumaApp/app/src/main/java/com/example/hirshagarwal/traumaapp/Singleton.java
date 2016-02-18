@@ -3,6 +3,7 @@ package com.example.hirshagarwal.traumaapp;
 import android.util.Pair;
 
 import com.example.hirshagarwal.traumaapp.obj.Patient;
+import com.example.hirshagarwal.traumaapp.obj.Trauma;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class Singleton {
 
     private static Singleton firstInstance = null;
     private ArrayList<Patient> patients = new ArrayList<Patient>();
+    private Trauma trauma = new Trauma();
     private int currentPatient = 0;
 
     private Singleton(){}
@@ -32,6 +34,10 @@ public class Singleton {
     public void addPatient(Patient p){
         patients.add(p);
         currentPatient = patients.size()-1;
+    }
+
+    public void setTrauma(Trauma trauma){
+        this.trauma = trauma;
     }
 
 
