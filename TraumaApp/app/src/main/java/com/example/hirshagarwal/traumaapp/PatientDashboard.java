@@ -12,6 +12,9 @@ import com.example.hirshagarwal.traumaapp.obj.Patient;
 
 public class PatientDashboard extends Activity {
 
+    //TODO Fix name entry
+    //TODO Fix male/female entry
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,5 +77,6 @@ public class PatientDashboard extends Activity {
         startActivity(i);
     }
 
+    //TODO Add submit patient button
 
 }

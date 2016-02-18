@@ -102,7 +102,6 @@ public class newPatient extends Activity {
     }
 
     public void autoTriageButton(View v){
-        //TODO Setup the auto triage system
         Intent intent = new Intent(this, com.example.hirshagarwal.traumaapp.autoTriage.Walking.class);
         startActivity(intent);
     }
