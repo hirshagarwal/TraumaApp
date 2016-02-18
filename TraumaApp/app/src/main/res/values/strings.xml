@@ -12,4 +12,5 @@
     <string name="hello_square">Hello Square World!</string>
     <string name="title_activity_motor">Motor</string>
     <string name="title_activity_score">Score</string>
+    <string name="title_activity_patient_dashboard">PatientDashboard</string>
 </resources>

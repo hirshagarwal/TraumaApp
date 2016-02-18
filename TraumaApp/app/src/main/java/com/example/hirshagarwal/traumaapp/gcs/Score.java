@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.hirshagarwal.traumaapp.R;
+import com.example.hirshagarwal.traumaapp.Singleton;
+import com.example.hirshagarwal.traumaapp.obj.Patient;
 
 import org.w3c.dom.Text;
 
@@ -28,8 +30,12 @@ public class Score extends Activity {
     }
 
     public void confirmButton(View v){
-        Intent intent = new Intent(this, com.example.hirshagarwal.traumaapp.newPatient.class);
+        Intent intent = new Intent(this, com.example.hirshagarwal.traumaapp.PatientDashboard.class);
+        Singleton data = Singleton.getInstance();
+        Patient p = data.getPatient();
+        p.setGCS(score);
         startActivity(intent);
+
     }
 
     public void cancelButton(View v){

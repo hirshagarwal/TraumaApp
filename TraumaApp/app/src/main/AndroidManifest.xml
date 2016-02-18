@@ -38,7 +38,10 @@
             android:label="@string/title_activity_motor" />
         <activity
             android:name=".gcs.Score"
-            android:label="@string/title_activity_score"></activity>
+            android:label="@string/title_activity_score" />
+        <activity
+            android:name=".PatientDashboard"
+            android:label="@string/title_activity_patient_dashboard"></activity>
     </application>
 
 </manifest>
